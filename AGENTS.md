@@ -28,6 +28,17 @@ These skills assume MCP access to Obsidian (read/write notes) and, optionally, S
 
 Every skill that touches a Project or Direct Report note drafts to a staging note first (`00 - Inbox/Vault Updates YYYY-MM-DD.md`) and waits for an explicit "apply" instruction before writing to the real note. **Never skip the staging step**, even if asked to "just do it" — propose the change, then apply only on confirmation. This is the load-bearing safety property of the whole system: nothing about a real person's record changes without a human reading it first.
 
+## Tagging
+
+When creating or updating notes, apply `tags:` frontmatter using the controlled vocabulary documented in `README.md` (Tagging Convention section). Rules:
+
+- Use kebab-case topic tags drawn from the vocabulary — do not invent new tags without a clear gap
+- Apply tags to: Project notes, Meeting notes, Techniques, Research briefs
+- Do NOT tag folder membership (`DirectReport`, `Technique`, `VendorPartner`) — remove these if you encounter them
+- A project note gets its own project tag + any strategic themes it touches
+- A meeting note gets the tag(s) for the project(s) discussed
+- When uncertain whether a new tag is warranted, stage the question rather than inventing one
+
 ## Conventions worth repeating here
 
 - Always set `last-updated` frontmatter to today's date on any note you touch

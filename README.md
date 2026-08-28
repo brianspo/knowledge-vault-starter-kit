@@ -182,6 +182,56 @@ AI skills for vault operations. In Claude Code, these live in a plugin's `Skills
 
 ---
 
+## Tagging Convention
+
+Tags serve one purpose: **cross-cutting discovery across note types**. The folder structure handles organization; tags let you find everything touching a topic — projects, meeting notes, research briefs, techniques — in one search.
+
+Two kinds of tags, one field (`tags:` in frontmatter):
+
+```yaml
+tags: [topic-tag, topic-tag, state-tag]
+```
+
+### Topic tags
+
+Kebab-case. Build your own controlled vocabulary based on your active projects and recurring strategic themes. A few examples to seed from:
+
+| Tag | Covers |
+|---|---|
+| `[your-project-name]` | One tag per active project or program |
+| `[strategic-theme]` | Recurring topics that cut across projects (e.g., `ai-governance`, `security-posture`, `budget-planning`) |
+
+**Rules:**
+- One tag per active project — use the same tag on the project note, meeting notes, research briefs, and techniques related to it
+- Strategic theme tags let you find all notes touching a topic regardless of which folder they're in
+- Add new tags when a genuinely new topic emerges — don't create one-off tags for specific meetings or people
+- Keep the vocabulary in a single place (this README or a `AGENTS.md` section) so the AI agent stays consistent
+
+### State tags (optional, use sparingly)
+
+| Tag | Meaning |
+|---|---|
+| `waiting` | Blocked on someone outside your control |
+| `share` | Worth distributing to the team or stakeholders |
+| `stale` | Hasn't been updated — needs a review pass |
+
+### Where to apply
+
+| Note type | Apply tags for |
+|---|---|
+| Project notes | The project's own tag + any strategic themes it touches |
+| Meeting notes | The project(s) discussed |
+| Techniques | Strategic themes the technique applies to |
+| Research briefs | Subject matter covered |
+
+### What NOT to tag
+
+- **Don't replicate folder membership** — `DirectReport`, `Technique`, `VendorPartner` are redundant with the folder structure
+- **Don't create one-off tags** for specific meetings, people, or incidents
+- **Don't tag with type/status** already expressed in `type:` or `status:` frontmatter fields
+
+---
+
 ## Plugins
 
 ### Templater
