@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd plist — auto-starts Qdrant at login (macOS only).
+
+  Setup:
+    1. Replace YOURNAME with your macOS username in Label and file name
+    2. Adjust paths if you installed qdrant elsewhere
+    3. cp com.YOURNAME.qdrant-vault.plist ~/Library/LaunchAgents/com.YOURNAME.qdrant-vault.plist
+    4. launchctl load ~/Library/LaunchAgents/com.YOURNAME.qdrant-vault.plist
+    5. curl http://localhost:6333/healthz   # verify: "healthz check passed"
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.YOURNAME.qdrant-vault</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/YOURNAME/.local/bin/qdrant</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>QDRANT__SERVICE__HTTP_PORT</key>
+        <string>6333</string>
+        <key>QDRANT__SERVICE__GRPC_PORT</key>
+        <string>6334</string>
+        <key>QDRANT__LOG_LEVEL</key>
+        <string>WARN</string>
+        <key>QDRANT__STORAGE__STORAGE_PATH</key>
+        <string>/Users/YOURNAME/.local/share/vault-index/qdrant</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/YOURNAME/.local/share/vault-index</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/YOURNAME/.local/share/vault-index/qdrant-server.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/YOURNAME/.local/share/vault-index/qdrant-server.log</string>
+</dict>
+</plist>
